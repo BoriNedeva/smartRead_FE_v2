@@ -1,0 +1,29 @@
+<alert *ngIf="books && books.length == 0" type="success">
+  Nothing was found!
+</alert>
+<div *ngFor="let book of books" class="list-group" #bookContainer>
+  <a href="#" class="list-group-item">
+    <!--<h4 class="list-group-item-heading">{{book.name}}</h4>
+    <p class="list-group-item-text">Author: {{book.author}}</p>
+    <p class="list-group-item-text">Genre: {{book.genre}}</p>-->
+    <h4 class="list-group-item-heading">{{book.title}}</h4>
+    <p class="list-group-item-text">Author: {{book.author}}</p>
+    <p class="list-group-item-text">Rating: {{book.rating}}</p>
+  </a>
+  <div class="btn-group">
+    <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Add to list <span class="caret"></span>
+  </button>
+    <ul class="dropdown-menu">
+      <li *ngFor="let option of listOptions" (click)="addBookToList(option, book, bookContainer)">
+        <a>{{option}}</a>
+      </li>
+  </ul>
+</div>
+<!--<alert *ngIf="unsuccessful" type="danger">
+        {{message}}
+    </alert>
+    <alert *ngIf="successful" type="success">
+       {{message}}!
+    </alert>-->
+</div>
