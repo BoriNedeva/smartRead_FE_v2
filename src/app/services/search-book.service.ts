@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 export class SearhBookService {
     constructor(private http: Http) { }
 
-    //private searchUrl = 'http://localhost:8089/SmartRead/rest/search/searchBooks';
-    private searchUrl = 'api/recs1';
+    private searchUrl = 'http://localhost:8089/SmartRead/rest/search/searchBooks';
+    //private searchUrl = 'api/recs1';
 
     search(searchData: SearchBook): Observable<String> {
         if(Util.checkIfUserLoggedOut()){

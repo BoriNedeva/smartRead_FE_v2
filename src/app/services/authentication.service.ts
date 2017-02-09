@@ -16,8 +16,8 @@ export class AuthenticationService {
         //this.token = currentUser && currentUser.token;
     }
 
-    //private loginUrl = 'http://localhost:8089/SmartRead/rest/user/login';
-    private loginUrl = '/api/login';
+    private loginUrl = 'http://localhost:8089/SmartRead/rest/user/login';
+    //private loginUrl = '/api/login';
 
     login(user: User): Observable<boolean> {
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
