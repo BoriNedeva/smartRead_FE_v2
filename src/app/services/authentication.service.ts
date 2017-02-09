@@ -41,7 +41,7 @@ export class AuthenticationService {
                     // return false to indicate failed login
                     return false;
                 }
-            });
+            }).catch((error: any) => Observable.of(false));
     }
 
     logout(): void {
