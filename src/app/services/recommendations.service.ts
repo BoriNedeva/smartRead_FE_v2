@@ -7,8 +7,8 @@ import { Util } from '../shared/commons';
 @Injectable()
 export class RecommendationsService {
     private requestOptions: RequestOptions;
-    private dbScanUrl = '/api/recs1';
-    private knnUrl = '/api/recs2';
+    private dbScanUrl = 'http://localhost:8089/SmartRead/rest/recommendations/dbscan';
+    private knnUrl = 'http://localhost:8089/SmartRead/rest/recommendations/knn';
     private kMeansUrl = '/api/recs3';
 
     constructor(private http: Http) {
@@ -45,7 +45,7 @@ export class RecommendationsService {
     }
 
     private prepareBody() : string {
-        let user = { username: Cookie.get('currentUser') }; // throw error if no cookie
+        let user = { token: { token: Cookie.get('currentUser') }}; // throw error if no cookie
         let json = JSON.stringify(user);  
         return json;
     }
