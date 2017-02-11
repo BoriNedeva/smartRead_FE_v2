@@ -47,6 +47,11 @@ export class ResultThumbnailsComponent{
 
     rateBook(book) {
         let ratingDto = new RatingDTO(Cookie.get('currentUser'), book.isbn, book.rating);
-        this.actionsService.rateBook(ratingDto);
+        this.actionsService.rateBook(ratingDto).subscribe(mess => {
+            console.log(mess)
+        },
+            err => {
+                console.log(err);
+            });
     }
 }

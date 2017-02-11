@@ -33,13 +33,14 @@ export class ActionsService {
             .catch((error: any) => Observable.throw(error.json() || 'Server error')); //...errors if any
     }
 
-    rateBook(data: RatingDTO): void {
+    rateBook(data: RatingDTO): Observable<String> {
         if(Util.checkIfUserLoggedOut()){
             return;
         }
         let wrapper = { ratingObj: data };
         let json = JSON.stringify(wrapper);
-        this.http.post(this.rateAlgoServiceUrl, json, this.requestOptions).map((res: Response) => console.log(res.json())); // ...and calling .json() on the response to return data
+        return this.http.post(this.rateServiceUrl, json, this.requestOptions).map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+            .catch((error: any) => Observable.throw(error.json() || 'Server error')); //...errors if any//.map((res: Response) => console.log(res.json())); // ...and calling .json() on the response to return data
     }
 
     rateAlgorithm(data: AlgoRatingDTO) {
@@ -48,7 +49,7 @@ export class ActionsService {
         }
         let wrapper = { algoRatingObj: data };
         let json = JSON.stringify(wrapper);
-        this.http.post(this.rateServiceUrl, json, this.requestOptions).map((res: Response) => console.log(res.json())); // ...and calling .json() on the response to return data
+        this.http.post(this.rateAlgoServiceUrl, json, this.requestOptions).map((res: Response) => console.log(res.json())); // ...and calling .json() on the response to return data
     }
 
     getBookstores(): Observable<String> {
